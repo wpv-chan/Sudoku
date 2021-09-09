@@ -89,7 +89,7 @@ void sudoku::sudokuGrid() // 打印结果
     }
 }
 
-bool sudoku::findEmptyPlace(int &row, int &col) // 寻找空闲的位置
+bool sudoku::findEmptyPlace(int &row, int &col) // 寻找空闲的位置，用引用返回空闲的位置
 {
     for(row = 0; row < 9; ++row)
         for(col = 0; col < 9; ++col)
