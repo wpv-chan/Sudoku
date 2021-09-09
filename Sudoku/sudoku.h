@@ -41,7 +41,7 @@ sudoku::~sudoku()
 {
 }
 
-bool sudoku::isPresentInCol(int col, int num)
+bool sudoku::isPresentInCol(int col, int num) // 检查该数字是否已经存在于某列
 {
     for(int row = 0; row < 9; ++row)
         if(grid[row][col] == num)
@@ -50,7 +50,7 @@ bool sudoku::isPresentInCol(int col, int num)
     return false;
 }
 
-bool sudoku::isPresentInRow(int row, int num)
+bool sudoku::isPresentInRow(int row, int num) // 检查该数字是否已经存在于某行
 {
     for(int col = 0; col < 9; ++col)
         if(grid[row][col] == num)
@@ -59,7 +59,7 @@ bool sudoku::isPresentInRow(int row, int num)
     return false;
 }
 
-bool sudoku::isPresentInBox(int boxStartRow, int boxStartCol, int num)
+bool sudoku::isPresentInBox(int boxStartRow, int boxStartCol, int num) // 检查该数字是否已经存在于某个方块
 {
     for (int row = 0; row < 3; row++)
         for (int col = 0; col < 3; col++)
@@ -69,7 +69,7 @@ bool sudoku::isPresentInBox(int boxStartRow, int boxStartCol, int num)
     return false;
 }
 
-void sudoku::sudokuGrid()
+void sudoku::sudokuGrid() // 打印结果
 {
     for(int row = 0; row < 9; ++row)
     {
@@ -89,7 +89,7 @@ void sudoku::sudokuGrid()
     }
 }
 
-bool sudoku::findEmptyPlace(int &row, int &col)
+bool sudoku::findEmptyPlace(int &row, int &col) // 寻找空闲的位置
 {
     for(row = 0; row < 9; ++row)
         for(col = 0; col < 9; ++col)
@@ -100,7 +100,7 @@ bool sudoku::findEmptyPlace(int &row, int &col)
 }
 
 bool sudoku::isValidPlace(int row, int col, int num){
-   //when item not found in col, row and current 3x3 box
+   // 检查填写是否合法
    return !isPresentInRow(row, num) && !isPresentInCol(col, num) && !isPresentInBox(row - row%3 ,
 col - col%3, num);
 }
@@ -109,15 +109,15 @@ bool sudoku::solveSudoku()
 {
     int row, col;
     if (!findEmptyPlace(row, col))
-        return true; //when all places are filled
+        return true; // 当所有位置都被填满
     for (int num = 1; num <= 9; num++)
-    { //valid numbers are 1 - 9
+    {
         if (isValidPlace(row, col, num))
-        { //check validation, if yes, put the number in the grid
+        {
             grid[row][col] = num;
-            if (solveSudoku()) //recursively go for other rooms in the grid
+            if (solveSudoku())
                 return true;
-            grid[row][col] = 0; //turn to unassigned space when conditions are not satisfied
+            grid[row][col] = 0;
         }
     }
     return false;
