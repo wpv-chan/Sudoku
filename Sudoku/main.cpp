@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "sudoku.h"
-#pragma once
+//#pragma once
 using namespace std;
 
 int main() {
