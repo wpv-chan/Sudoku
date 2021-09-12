@@ -76,13 +76,13 @@ void sudoku::sudokuGrid() // 打印结果
         for(int col = 0; col < 9; ++col)
         {
             if(col == 3 || col == 6)
-                cout<<"|";
+                cout<<"| ";
             cout<<grid[row][col]<<" ";
         }
         if(row == 2 || row == 5)
         {
             cout<<endl;
-            for(int i = 0; i < 9; ++i)
+            for(int i = 0; i < 7; ++i)
                 cout<<"---";
         }
         cout<<endl;
@@ -117,7 +117,7 @@ bool sudoku::solveSudoku()
             grid[row][col] = num;
             if (solveSudoku())
                 return true;
-            grid[row][col] = 0;
+            grid[row][col] = 0; // 如果最后一个位置发现无法填入，则取消填写，并向上层迭代返回false
         }
     }
     return false;
