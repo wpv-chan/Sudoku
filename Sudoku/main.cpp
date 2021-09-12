@@ -17,7 +17,7 @@ int main() {
     for(int i = 0; i < 81; ++i)
         cin>>input[i];
     sudoku sd(input);
-
+    cout<<"解题结果："<<endl;
     if(sd.solveSudoku() == true)
         sd.sudokuGrid();
     else

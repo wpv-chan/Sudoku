@@ -17,7 +17,7 @@ using namespace std;
 class sudoku
 {
 private:
-    int grid[9][9] = {0}, col, row, num, boxStartCol, boxStartRow;
+    int grid[9][9];
 public:
     sudoku(int*);
     ~sudoku();
@@ -32,6 +32,7 @@ public:
 
 sudoku::sudoku(int *input)
 {
+    memset(grid, 0, sizeof(grid));
     for(int i = 0; i < 9; ++i)
         for(int j = 0; j < 9; ++j)
             grid[i][j] = *(input++);
