@@ -117,7 +117,7 @@ bool sudoku::solveSudoku()
             grid[row][col] = num;
             if (solveSudoku())
                 return true;
-            grid[row][col] = 0; // 如果最后一个位置发现无法填入，则取消填写，并向上层迭代返回false
+            grid[row][col] = 0; // 如果最后一个位置发现无法填入，则取消填写
         }
     }
     return false;
